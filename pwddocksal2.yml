@@ -10,4 +10,6 @@
 version: '3'
 services:
   trigger:
-    command: "curl -fsSL get.docksal.io | DOCKSAL_VERSION=develop sh"
+    image: franela/dind
+    command: sh -c "curl -fsSL get.docksal.io | DOCKSAL_VERSION=develop sh; tail -f /dev/null"
+    volumes: [ '/var/run/docker.sock:/var/run/docker.sock' ]
